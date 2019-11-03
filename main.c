@@ -3,9 +3,9 @@
 #include<stdlib.h>
 #include "data.h"
 #include "ticketing.h"
-#include "Localtravel.c"
-#include "StayInhotel.c"
-#include "Extraactivities.c"
+#include "Localtravel.h"
+#include "StayInhotel.h"
+#include "Extraactivities.h"
 //#include "data.txt"
 int main()
 {
@@ -29,7 +29,7 @@ int main()
   printf("||                                                                                    ||\n");
   printf("________________________________________________________________________________________\n");
   printf("________________________________________________________________________________________\n");
-  int choice,price_ticket=0,price_stay=0;
+  int choice,price_ticket=0,price_stay=0,price_local=0,price_Extra=0;
 while(1){
         scanf("%d",&choice);
   switch(choice){
