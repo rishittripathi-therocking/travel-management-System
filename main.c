@@ -5,7 +5,7 @@
 #include "ticketing.h"
 #include "Localtravel.c"
 #include "StayInhotel.c"
-//#include "Extraactivities.c"
+#include "Extraactivities.c"
 //#include "data.txt"
 int main()
 {
@@ -42,5 +42,99 @@ while(1){
     break;
   }
 }
-printf("YOUR TOTAL TRAVEL COST IS=%d\n\n\n\n\n\n",price_ticket,price_hotel);
+  system("cls");
+int Total_Price=price_Extra+price_local+price_stay+price_ticket;
+printf("NOW GST WILL BE ADDED TO 5% YOUR PRICE\n\n");
+Total_Price+=((5*Total_Price)/100);
+printf("PRICE For TICKET= %d\n",price_ticket);
+printf("PRICE For STAY= %d\n",price_stay);
+printf("PRICE For LOCAL TRAVEL= %d\n",price_local);
+printf("PRICE For EXTRA= %d\n\n\n",price_Extra);
+char datto[200];
+   char ch;
+   int d=0,i=0;
+FILE *fp;
+fp=fopen("data.txt","r+");
+      while(ch!='.' && ch!=EOF)
+
+  {
+
+    ch = getc(fp);
+
+    if(ch=='\n')
+
+    {
+
+      d++;
+
+    }
+
+
+
+      datto[i++]=ch;
+
+
+  }
+  datto[i-1]='\0';
+
+printf("%s\n\n\n\n",datto);
+fclose(fp);
+
+char datto1[200];
+   char ch1;
+   int d1=0,i1=0;
+fp=fopen("destination.txt","r+");
+      while(ch1!='.' && ch1!=EOF)
+
+  {
+
+    ch1 = getc(fp);
+
+    if(ch1=='\n')
+
+    {
+
+      d1++;
+
+    }
+
+
+
+      datto1[i1++]=ch;
+
+
+  }
+  datto1[i1-1]='\0';
+
+printf("%s\n\n\n\n",datto1);
+fclose(fp);
+
+char datto2[200];
+   char ch2;
+   int d2=0,i2=0;
+fp=fopen("activity.txt","r+");
+      while(ch2!='.' && ch2!=EOF)
+
+  {
+
+    ch2 = getc(fp);
+
+    if(ch2=='\n')
+
+    {
+
+      d2++;
+
+    }
+
+
+
+      datto2[i2++]=ch;
+
+
+  }
+  datto2[i2-1]='\0';
+
+printf("%s\n\n\n\n",datto2);
+  printf("YOUR TOTAL PRICE AFTER ADDING GST IS IS=RS %d\n\n\n\n",Total_Price);
 }
