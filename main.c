@@ -36,6 +36,7 @@ while(1){
      case 1: data();break;
      case 2: price_ticket+=ticketing();break;
      case 3:price_stay+=stay_hotel();break;
+      case 4:price_local+=Local_travel();break;
   }
   if(choice==6){
     break;
