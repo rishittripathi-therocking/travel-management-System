@@ -81,34 +81,30 @@ fp=fopen("data.txt","r+");
 printf("%s\n\n\n\n",datto);
 fclose(fp);
 
-char datto1[200];
-   char ch1;
-   int d1=0,i1=0;
-fp=fopen("destination.txt","r+");
-      while(ch1!='.' && ch1!=EOF)
+char ch1;
+
+  int k=0;
+
+  char str[100];
+
+  fp=fopen("destination.txt","r");
+
+
+
+  while(ch1!='.' && ch1!=EOF)
 
   {
 
     ch1 = getc(fp);
 
-    if(ch1=='\n')
-
-    {
-
-      d1++;
-
-    }
-
-
-
-      datto1[i1++]=ch;
-
+      str[k++]=ch1;
 
   }
-  datto1[i1-1]='\0';
 
-printf("%s\n\n\n\n",datto1);
-fclose(fp);
+   fclose(fp);
+  str[k-1]='\0';
+
+printf("%s\n\n\n",str);
   int r=0,d2=0;
 
   char st[100];
