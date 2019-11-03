@@ -109,33 +109,28 @@ fp=fopen("destination.txt","r+");
 
 printf("%s\n\n\n\n",datto1);
 fclose(fp);
+  int r=0,d2=0;
 
-char datto2[200];
-   char ch2;
-   int d2=0,i2=0;
-fp=fopen("activity.txt","r+");
-      while(ch2!='.' && ch2!=EOF)
+  char st[100];
+
+  fp=fopen("activity.txt","r");
+  fseek(fp,0,SEEK_SET);
+
+char ch2;
+  while(ch2!='.' && ch2!=EOF)
 
   {
 
     ch2 = getc(fp);
 
-    if(ch2=='\n')
 
-    {
-
-      d2++;
-
-    }
-
-
-
-      datto2[i2++]=ch;
-
+      st[r++]=ch2;
 
   }
-  datto2[i2-1]='\0';
 
-printf("%s\n\n\n\n",datto2);
+   fclose(fp);
+  st[r-1]='\0';
+
+printf("%s\n\n\n",st);
   printf("YOUR TOTAL PRICE AFTER ADDING GST IS IS=RS %d\n\n\n\n",Total_Price);
 }
