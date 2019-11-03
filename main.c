@@ -29,16 +29,17 @@ int main()
   printf("||                                                                                    ||\n");
   printf("________________________________________________________________________________________\n");
   printf("________________________________________________________________________________________\n");
-  int choice,price;
+  int choice,price_ticket=0,price_stay=0;
 while(1){
         scanf("%d",&choice);
   switch(choice){
      case 1: data();break;
-     case 2: price+=ticketing();break;
+     case 2: price_ticket+=ticketing();break;
+     case 3:price_stay+=stay_hotel();break;
   }
   if(choice==6){
     break;
   }
 }
-printf("YOUR TOTAL TRAVEL COST IS=%d\n\n\n\n\n\n",price);
+printf("YOUR TOTAL TRAVEL COST IS=%d\n\n\n\n\n\n",price_ticket,price_hotel);
 }
