@@ -3,8 +3,8 @@
 #include<stdlib.h>
 #include "data.h"
 #include "ticketing.h"
-//#include "Localtravel.c"
-//#include "StayInhotel.c"
+#include "Localtravel.c"
+#include "StayInhotel.c"
 //#include "Extraactivities.c"
 //#include "data.txt"
 int main()
