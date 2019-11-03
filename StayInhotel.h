@@ -36,7 +36,7 @@ extern int stay_hotel(){
   printf("||                                                                                  ||\n");
   printf("______________________________________________________________________________________\n");
   printf("______________________________________________________________________________________\n");
- printf("ENTER YOR CHOICE FROM 1-4\n\n");
+ printf("ENTER YOUR CHOICE FROM 1-4\n\n");
  scanf("%d",&season);
   switch(season){
   case 1:price+=300*noofRooms*days;break;
@@ -59,7 +59,7 @@ extern int stay_hotel(){
   printf("||                                                                                  ||\n");
   printf("______________________________________________________________________________________\n");
   printf("______________________________________________________________________________________\n");
-  printf("YOur Coice");
+  printf("YOur Coice\n");
   scanf("%d",&Package);
   switch(Package){
      case 1:price+=400*noofRooms*days;break;
