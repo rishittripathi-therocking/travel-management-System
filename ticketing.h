@@ -1,139 +1,290 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-#include "data.h"
-#include "ticketing.h"
-#include "Localtravel.h"
-#include "StayInhotel.h"
-#include "Extraactivities.h"
+//#include<string.h>
+//#include<stdio.h>
+//#include<stdlib.h>
 //#include "data.txt"
-int main()
-{
-  printf("                ________________________________________________________________________________________\n");
-  printf("                ________________________________________________________________________________________\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ||                         WELCOME TO ARMIS TOURS AND TRAVELS                         ||\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ||                                Enter your choices:                                 ||\n");
-  printf("                ||                                 1:-  ENTER YOUR DATA                               ||\n");
-  printf("                ||                                 2:-  TICKETING                                     ||\n");
-  printf("                ||                                 3:-  STAY IN HOTEL/RESORT                          ||\n");
-  printf("                ||                                 4:-  LOCAL TRAVEL                                  ||\n");
-  printf("                ||                                 5:-  EXTRA ACTIVITIES                              ||\n");
-  printf("                ||                                 6:-  EXIT                                          ||\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ||                                                                                    ||\n");
-  printf("                ________________________________________________________________________________________\n");
-  printf("                ________________________________________________________________________________________\n");
-  int choice,price_ticket=0,price_stay=0,price_local=0,price_Extra=0;
-while(1){
-        scanf("%d",&choice);
-  switch(choice){
-     case 1: data();break;
-     case 2: price_ticket+=ticketing();break;
-     case 3:price_stay+=stay_hotel();break;
-     case 4:price_local+=Local_travel();break;
-     case 5:price_Extra+=Extra();break;
-  }
-  if(choice==6){
-    break;
-  }
-}
-  system("cls");
-int Total_Price=price_Extra+price_local+price_stay+price_ticket;
-printf("NOW GST WILL BE ADDED TO 5% YOUR PRICE\n\n");
-Total_Price+=((5*Total_Price)/100);
-printf("PRICE For TICKET= %d\n",price_ticket);
-printf("PRICE For STAY= %d\n",price_stay);
-printf("PRICE For LOCAL TRAVEL= %d\n",price_local);
-printf("PRICE For EXTRA= %d\n\n\n",price_Extra);
-char datto[200];
-   char ch;
-   int d=0,i=0;
-FILE *fp;
-fp=fopen("data.txt","r+");
-      while(ch!='.' && ch!=EOF)
+extern int ticketing(){
+    system("cls");
+  int passengers,adults,price=0,child,arr[5],i=0,choice=0,choice123=0;
+  int size,index;
+  char ch;
+  FILE *fp=fopen("data.txt","r");
+    while(ch!='.' && ch!=EOF)
 
   {
 
     ch = getc(fp);
-
-    if(ch=='\n')
-
-    {
-
-      d++;
-
+    if(ch=='0' || ch=='1'||ch=='2'||ch=='3'||ch=='4'||ch=='5'||ch=='6'||ch=='7'||ch=='8'||ch=='9'){
+        arr[i++]=ch-'0';
     }
 
-
-
-      datto[i++]=ch;
-
-
   }
-  datto[i-1]='\0';
+  size=i;
+  char destination_international[5][50]={"AMERICA","MALDIVES","NEW ZEALAND","AUSTRALIA","ENGLAND"};
+  int distance_int[5]={3500,1200,2700,2800,3000};
+  char destination_domestic[5][50]={"MANALI","MUMBAI","BANGLORE","DARJEELING","SHIMLA"};
+  int distance_domestic[5]={395,750,850,880,90};
+  char carrier[2][100]={"NATIONAL","INTERNATIONAL"};
 
-printf("%s\n\n\n\n",datto);
-fclose(fp);
+  passengers=arr[0];
+  adults=arr[1];
+  child=passengers-adults;
+  fclose(fp);
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                              Enter Your choice:-                                 ||\n");
+  printf("||                                1:- DOMESTIC TRAVEL                               ||\n");
+  printf("||                                2:- INTERNATIONAL TRAVEL                          ||\n");
+  printf("||                                3:- Exit                                          ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  FILE *fp1=fopen("destination.text","w+");
+  char your_dest[50],your_carrier[50];
+  while(1){
+    printf("Please Enter Your Choice\n");
+    scanf("%d",&choice);
+    system("cls");
+    switch(choice){
+      case 1:printf("Please Enter your destination from these\n");
+      for(int i=0;i<5;i++){
+          printf("%s\n",destination_domestic[i]);
+      }
+      printf("\n\n");
+      scanf("%s",your_dest);
+      system("cls");
+      for(int i=0;i<5;i++){
+          if(strcmp(your_dest,destination_domestic[i])==0){
+            index=i;
+            fprintf(fp1,"YOUR DESTINATION=%s\n",your_dest);
+            fprintf(fp1,"YOUR DISTANCE=%d\n",distance_domestic[i]);
+            break;
+          }
 
-char ch1;
+      }
 
-  int k=0;
+      if(distance_domestic[index]<500){
+        printf("You are travelling by railway\n");
+        if(distance_domestic[index]<350){
+            printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                              Enter Your choice:-                                 ||\n");
+  printf("||                                1:- AC                                            ||\n");
+  printf("||                                2:- SLEEPER                                       ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("ENTER YOUR CHOICE:\n\n");
+  scanf("%d",&choice123);
+  switch(choice123){
+   case 1:price+=850*adults;
+          price+=550*child;
+          break;
+   case 2:
+          price+=650*adults;
+          price+=350*child;
+          break;
+  }
+        }
+        else{
+                       printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                              Enter Your choice:-                                 ||\n");
+  printf("||                                1:- AC                                            ||\n");
+  printf("||                                2:- SLEEPER                                       ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("ENTER YOUR CHOICE:\n\n");
+  scanf("%d",&choice123);
+  switch(choice123){
+   case 1:price+=1050*adults;
+          price+=850*child;
+          break;
+   case 2:
+          price+=850*adults;
+          price+=450*child;
+          break;
+  }
+        }
+        system("cls");
+      }
+      else{
+        printf("You are travelling by air\n");
+       if(distance_domestic[index]<450){
+                                   printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                              Enter Your choice:-                                 ||\n");
+  printf("||                                1:- ECONOMY                                       ||\n");
+  printf("||                                2:- BUISNESS                                      ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("ENTER YOUR CHOICE:\n\n");
+  scanf("%d",&choice123);
+  switch(choice123){
+   case 1:price+=1500*adults;
+          price+=850*child;
+          break;
+   case 2:
+          price+=2050*adults;
+          price+=1250*child;
+          break;
+  }
+        }
+        else{
+                                            printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                              Enter Your choice:-                                 ||\n");
+  printf("||                                1:- ECONOMY                                       ||\n");
+  printf("||                                2:- BUISNESS                                      ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("ENTER YOUR CHOICE:\n\n");
+  scanf("%d",&choice123);
+  switch(choice123){
+   case 1:price+=2500*adults;
+          price+=1250*child;
+          break;
+   case 2:
+          price+=4050*adults;
+          price+=2050*child;
+          break;
+  }
+        }
 
-  char str[100];
+system("cls");
+      }
 
-  fp=fopen("destination.txt","r");
+printf("\nYOUR TOTAL COST IS=%d\n",price);
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                              Enter Your choice:-                                 ||\n");
+  printf("||                                1:- DOMESTIC TRAVEL                               ||\n");
+  printf("||                                2:- INTERNATIONAL TRAVEL                          ||\n");
+  printf("||                                3:- Exit                                          ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+      break;
+
+      case 2:
+          printf("Please Enter your destination from these\n");
+      for(int i=0;i<5;i++){
+          printf("%s\n",destination_international[i]);
+      }
+      printf("\n\n");
+      scanf("%s",your_dest);
+      system("cls");
+      for(int i=0;i<5;i++){
+          if(strcmp(your_dest,destination_international[i])==0){
+            index=i;
+            fprintf(fp1,"YOUR DESTINATION=%s\n",your_dest);
+            fprintf(fp1,"YOUR DISTANCE=%d\n",distance_domestic[i]);
+
+            break;
+          }
+
+      }
+printf("CHOOSE YOUE CARRIER");
+for(int i=0;i<2;i++){
+    printf("%s\n",carrier[i]);
+}
+printf("\n\n");
+scanf("%s",&your_carrier);
+fprintf(fp1,"YOUR CARRIER=%d\n",your_carrier);
+if(strcmp(your_carrier,carrier[0])==0){
+        if(distance_int[index]<1500){
+    price+=10000*adults;
+    price+=7500*child;}
+
+else{
+    price+=18000*adults;
+    price+=12500*child;
+}
+}
+else{
+             if(distance_int[index]<1500){
+    price+=16000*adults;
+    price+=12500*child;
+             }
+else{
+    price+=30000*adults;
+    price+=20500*child;
+}
+      }
+
+printf("\nYOUR TOTAL COST IS=%d\n",price);
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                              Enter Your choice:-                                 ||\n");
+  printf("||                                1:- DOMESTIC TRAVEL                               ||\n");
+  printf("||                                2:- INTERNATIONAL TRAVEL                          ||\n");
+  printf("||                                3:- Exit                                          ||\n");
+  printf("||                                                                                  ||\n");
+  printf("||                                                                                  ||\n");
+  printf("______________________________________________________________________________________\n");
+  printf("______________________________________________________________________________________\n");
+      break;
 
 
 
-  while(ch1!='.' && ch1!=EOF)
-
-  {
-
-    ch1 = getc(fp);
-
-      str[k++]=ch1;
-
+    }
+    if (choice==3){
+            fclose(fp1);
+        break;
+    }
   }
 
-   fclose(fp);
-  str[k-1]='\0';
+system("cls");
+printf("\n");
+printf("________________________________________________________________________________________\n");
+  printf("________________________________________________________________________________________\n");
+  printf("||                                                                                    ||\n");
+  printf("||                                                                                    ||\n");
+  printf("||                                                                                    ||\n");
+  printf("||                                                                                    ||\n");
+  printf("||                         WELCOME TO ARMIS TOURS AND TRAVELS                         ||\n");
+  printf("||                                                                                    ||\n");
+  printf("||                                Enter your choices:                                 ||\n");
+  printf("||                                 1:-  ENTER YOUR DATA                               ||\n");
+  printf("||                                 2:-  TICKETING                                     ||\n");
+  printf("||                                 3:-  STAY IN HOTEL/RESORT                          ||\n");
+  printf("||                                 4:-  LOCAL TRAVEL                                  ||\n");
+  printf("||                                 5:-  EXTRA ACTIVITIES                              ||\n");
+  printf("||                                 6:-  EXIT                                          ||\n");
+  printf("||                                                                                    ||\n");
+  printf("||                                                                                    ||\n");
+  printf("||                                                                                    ||\n");
+  printf("________________________________________________________________________________________\n");
+  printf("________________________________________________________________________________________\n");
+return price;
 
-printf("%s\n\n\n",str);
-  int r=0,d2=0;
-
-  char st[100];
-
-  fp=fopen("activity.txt","r");
-  fseek(fp,0,SEEK_SET);
-
-char ch2;
-  while(ch2!='.' && ch2!=EOF)
-
-  {
-
-    ch2 = getc(fp);
-
-
-      st[r++]=ch2;
-
-  }
-
-   fclose(fp);
-  st[r-1]='\0';
-
-printf("%s\n\n\n",st);
-  printf("YOUR TOTAL PRICE AFTER ADDING GST IS IS=RS %d\n\n\n\n",Total_Price);
-  printf("THANK YOU FOR USING OUR SERVICES\n\n\n");
-  printf("Project BY:-\n\n\n");
-  printf("NAME:- RISHIT , ID:- 1811981254\n");
-  printf("NAME:- ISHAAN , ID:- 1811981146\n");
-  printf("NAME:- SRISHTI , ID:- 1811981311\n");
-  printf("NAME:- MANAV , ID:- 1811981177\n");
-  printf("NAME:- ANVI , ID:- 1811981064\n\n\n\n\n");
 }
