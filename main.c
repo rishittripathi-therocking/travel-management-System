@@ -129,4 +129,7 @@ char ch2;
 
 printf("%s\n\n\n",st);
   printf("YOUR TOTAL PRICE AFTER ADDING GST IS IS=RS %d\n\n\n\n",Total_Price);
+   printf("THANK YOU FOR USING OUR SERVICES\n\n\n");
+  printf("Project BY:-\n\n\n");
+  printf("NAME:- RISHIT , ID:- 1811981254\n");
 }
