@@ -1,6 +1,8 @@
 //#include<stdio.h>
 //#include<string.h>
 extern int stay_hotel(){
+    //SetColor(12);
+    ClearConsoleToColors(12,15);
     system("cls");
     int price=0,days,arr[5],i=0;
     char ch;
@@ -36,7 +38,7 @@ extern int stay_hotel(){
   printf("||                                                                                  ||\n");
   printf("______________________________________________________________________________________\n");
   printf("______________________________________________________________________________________\n");
- printf("ENTER YOUR CHOICE FROM 1-4\n\n");
+ printf("ENTER YOR CHOICE FROM 1-4\n\n");
  scanf("%d",&season);
   switch(season){
   case 1:price+=300*noofRooms*days;break;
@@ -59,7 +61,7 @@ extern int stay_hotel(){
   printf("||                                                                                  ||\n");
   printf("______________________________________________________________________________________\n");
   printf("______________________________________________________________________________________\n");
-  printf("YOur Coice\n");
+  printf("YOur Coice");
   scanf("%d",&Package);
   switch(Package){
      case 1:price+=400*noofRooms*days;break;
@@ -71,6 +73,7 @@ extern int stay_hotel(){
   }
   system("cls");
 printf("\n");
+ClearConsoleToColors(2,15);
 printf("________________________________________________________________________________________\n");
   printf("________________________________________________________________________________________\n");
   printf("||                                                                                    ||\n");
