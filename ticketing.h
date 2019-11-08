@@ -3,6 +3,8 @@
 //#include<stdlib.h>
 //#include "data.txt"
 extern int ticketing(){
+    // SetColor(4);
+    ClearConsoleToColors(4,15);
     system("cls");
   int passengers,adults,price=0,child,arr[5],i=0,choice=0,choice123=0;
   int size,index;
@@ -265,6 +267,7 @@ printf("\nYOUR TOTAL COST IS=%d\n",price);
 
 system("cls");
 printf("\n");
+ClearConsoleToColors(2,15);
 printf("________________________________________________________________________________________\n");
   printf("________________________________________________________________________________________\n");
   printf("||                                                                                    ||\n");
