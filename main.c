@@ -1,34 +1,72 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include <windows.h>
+#include <dos.h>
+#include <dir.h>
 #include "data.h"
 #include "ticketing.h"
 #include "Localtravel.h"
 #include "StayInhotel.h"
 #include "Extraactivities.h"
+
 //#include "data.txt"
+void ClearConsoleToColors(int ForgC, int BackC)
+{
+     WORD wColor = ((BackC & 0x0F) << 4) + (ForgC & 0x0F);
+     //This is used to get the handle to current output buffer.
+
+     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+     //This is used to reset the carat/cursor to the top left.
+
+     COORD coord = {0, 0};
+                      //This is a return value indicating how many characterss were written
+                        //   It is not used but we need to capture this since it will be
+                          //   written anyway (passing NULL causes an access violation).
+
+     DWORD count;
+
+                                   //This is a structure containing all the console info
+                          // It is used here to find the size of the console.
+
+     CONSOLE_SCREEN_BUFFER_INFO csbi;
+                     //Now the current color will be set by this handle
+
+     SetConsoleTextAttribute(hStdOut, wColor);
+
+     if(GetConsoleScreenBufferInfo(hStdOut, &csbi))
+     {
+                              //This fills the buffer with a given character (in this case 32=space).
+          FillConsoleOutputCharacter(hStdOut, (TCHAR) 32, csbi.dwSize.X * csbi.dwSize.Y, coord, &count);
+
+          FillConsoleOutputAttribute(hStdOut, csbi.wAttributes, csbi.dwSize.X * csbi.dwSize.Y, coord, &count );
+                              //This will set our cursor position for the next print statement
+          SetConsoleCursorPosition(hStdOut, coord);
+     }
+}
 int main()
 {
-  printf("________________________________________________________________________________________\n");
-  printf("________________________________________________________________________________________\n");
-  printf("||                                                                                    ||\n");
-  printf("||                                                                                    ||\n");
-  printf("||                                                                                    ||\n");
-  printf("||                                                                                    ||\n");
-  printf("||                         WELCOME TO ARMIS TOURS AND TRAVELS                         ||\n");
-  printf("||                                                                                    ||\n");
-  printf("||                                Enter your choices:                                 ||\n");
-  printf("||                                 1:-  ENTER YOUR DATA                               ||\n");
-  printf("||                                 2:-  TICKETING                                     ||\n");
-  printf("||                                 3:-  STAY IN HOTEL/RESORT                          ||\n");
-  printf("||                                 4:-  LOCAL TRAVEL                                  ||\n");
-  printf("||                                 5:-  EXTRA ACTIVITIES                              ||\n");
-  printf("||                                 6:-  EXIT                                          ||\n");
-  printf("||                                                                                    ||\n");
-  printf("||                                                                                    ||\n");
-  printf("||                                                                                    ||\n");
-  printf("________________________________________________________________________________________\n");
-  printf("________________________________________________________________________________________\n");
+    ClearConsoleToColors(2,15);
+  printf("                ________________________________________________________________________________________\n");
+  printf("                ________________________________________________________________________________________\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ||                         WELCOME TO ARMIS TOURS AND TRAVELS                         ||\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ||                                Enter your choices:                                 ||\n");
+  printf("                ||                                 1:-  ENTER YOUR DATA                               ||\n");
+  printf("                ||                                 2:-  TICKETING                                     ||\n");
+  printf("                ||                                 3:-  STAY IN HOTEL/RESORT                          ||\n");
+  printf("                ||                                 4:-  LOCAL TRAVEL                                  ||\n");
+  printf("                ||                                 5:-  EXTRA ACTIVITIES                              ||\n");
+  printf("                ||                                 6:-  EXIT                                          ||\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ||                                                                                    ||\n");
+  printf("                ________________________________________________________________________________________\n");
+  printf("                ________________________________________________________________________________________\n");
   int choice,price_ticket=0,price_stay=0,price_local=0,price_Extra=0;
 while(1){
         scanf("%d",&choice);
@@ -129,7 +167,7 @@ char ch2;
 
 printf("%s\n\n\n",st);
   printf("YOUR TOTAL PRICE AFTER ADDING GST IS IS=RS %d\n\n\n\n",Total_Price);
-   printf("THANK YOU FOR USING OUR SERVICES\n\n\n");
+  printf("THANK YOU FOR USING OUR SERVICES\n\n\n");
   printf("Project BY:-\n\n\n");
   printf("NAME:- RISHIT , ID:- 1811981254\n");
 }
