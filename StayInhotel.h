@@ -6,7 +6,7 @@ extern int stay_hotel(){
     system("cls");
     int price=0,days,arr[5],i=0;
     char ch;
-    FILE *fp=fopen("data.txt","r");
+    FILE *fp=fopen("data","r");
     while(ch!='.' && ch!=EOF)
 
   {
